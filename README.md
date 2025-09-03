@@ -46,46 +46,116 @@ Você deverá criar diversas consultas, com o objetivo de retornar os dados a se
 
 ![Exercicio 1](Imagens/1.png)
 
+SELECT 
+  Nome,
+  Ano
+FROM Filmes;
+
+
+
 ## 2 - Buscar o nome e ano dos filmes, ordenados por ordem crescente pelo ano
 
 ![Exercicio 2](Imagens/2.png)
+SELECT 
+  Nome,
+  Ano
+FROM Filmes
+ORDER BY Ano ASC;
+
 
 ## 3 - Buscar pelo filme de volta para o futuro, trazendo o nome, ano e a duração
 
 ![Exercicio 3](Imagens/3.png)
+SELECT *
+FROM Filmes
+WHERE Nome LIKE '%futuro';
+
 
 ## 4 - Buscar os filmes lançados em 1997
 
 ![Exercicio 4](Imagens/4.png)
+SELECT *
+FROM Filmes
+WHERE Ano LIKE '1997';
+
 
 ## 5 - Buscar os filmes lançados APÓS o ano 2000
 
 ![Exercicio 5](Imagens/5.png)
+SELECT 
+  Ano,
+  Nome,
+  Duracao
+FROM Filmes
+WHERE Ano > 2000;
+
+
 
 ## 6 - Buscar os filmes com a duracao maior que 100 e menor que 150, ordenando pela duracao em ordem crescente
 
 ![Exercicio 6](Imagens/6.png)
+SELECT 
+  Nome,
+  Ano,
+  Duracao
+FROM Filmes
+WHERE Duracao BETWEEN 101 AND 150
+ORDER BY Duracao;
+
 
 ## 7 - Buscar a quantidade de filmes lançadas no ano, agrupando por ano, ordenando pela duracao em ordem decrescente
 
 ![Exercicio 7](Imagens/7.png)
+SELECT 
+  Ano,
+  COUNT(*) AS quantidade
+FROM Filmes
+GROUP BY Ano
+ORDER BY quantidade DESC;
+
+
 
 ## 8 - Buscar os Atores do gênero masculino, retornando o PrimeiroNome, UltimoNome
 
 ![Exercicio 8](Imagens/8.png)
+select 
+*
+from Atores
+where Genero ='M'
+
 
 ## 9 - Buscar os Atores do gênero feminino, retornando o PrimeiroNome, UltimoNome, e ordenando pelo PrimeiroNome
 
 ![Exercicio 9](Imagens/9.png)
+select 
+*
+from Atores
+where Genero ='F'
+order by PrimeiroNome asc
 
 ## 10 - Buscar o nome do filme e o gênero
 
 ![Exercicio 10](Imagens/10.png)
+Select Filmes.Nome, Generos.Genero
+from Filmes, Generos
 
 ## 11 - Buscar o nome do filme e o gênero do tipo "Mistério"
 
 ![Exercicio 11](Imagens/11.png)
+Select Filmes.Nome, Generos.Genero
+from Filmes, Generos
+where Genero = 'Mistério'
 
 ## 12 - Buscar o nome do filme e os atores, trazendo o PrimeiroNome, UltimoNome e seu Papel
 
 ![Exercicio 12](Imagens/12.png)
+SELECT Filmes.Nome AS NomeDoFilme,
+       Atores.PrimeiroNome,
+       Atores.UltimoNome,
+       ElencoFilme.Papel
+FROM ElencoFilme
+JOIN Filmes ON ElencoFilme.IdFilme = Filmes.Id
+JOIN Atores ON ElencoFilme.IdAtor = Atores.Id;
+
+
+
